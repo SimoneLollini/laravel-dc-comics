@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\ComicsController;
 use App\Http\Controllers\Guest\PageController;
 use App\Models\Comics;
+use App\Http\Controllers\ComicsController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::resource('comics', ComicsController::class);
+Route::get('admin/comics', [ComicsController::class, 'index'])->name('comics.index');
+
+Route::resource('admin/comics', ComicsController::class);

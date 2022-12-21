@@ -15,7 +15,8 @@ class ComicsController extends Controller
      */
     public function index()
     {
-        //
+        $comics = Comics::all();
+        return view('admin.comics.index', compact('comics'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ComicsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.comics.create');
     }
 
     /**
@@ -36,7 +37,10 @@ class ComicsController extends Controller
      */
     public function store(StoreComicsRequest $request)
     {
-        //
+        $data = $request->all();
+        $newComics = new Comics();
+        $newComics->save();
+        return redirect()->route('admin.comics.show', $newComics->id);
     }
 
     /**
@@ -45,9 +49,9 @@ class ComicsController extends Controller
      * @param  \App\Models\Comics  $comics
      * @return \Illuminate\Http\Response
      */
-    public function show(Comics $comics)
+    public function show(Comics $comic)
     {
-        //
+        return view('admin.comics.show', compact('comic'));
     }
 
     /**
