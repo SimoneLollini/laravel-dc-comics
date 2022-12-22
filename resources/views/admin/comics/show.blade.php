@@ -1,6 +1,5 @@
-@extends ('layouts.app')
+@extends('layouts.app')
 
 @section('contents')
-index
-
+show
 @endsection
