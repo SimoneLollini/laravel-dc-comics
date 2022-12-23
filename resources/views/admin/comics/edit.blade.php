@@ -3,10 +3,10 @@
 @section('contents')
 
 <div class="container mb-5">
-    <h1 class="py-5">Create a new Product</h1>
-    <form action="inserire rotta" method="post" class="card p-3">
+    <h1 class="py-5">Edit "{{$comic->title}}"</h1>
+    <form action="{{route('comics.update', ['id'=>$comic->id]) }}" method="POST" class="card p-3">
         @csrf
-
+        @method ('PUT')
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" name="title" id="title" class="form-control" aria-describedby="titleHlper">
