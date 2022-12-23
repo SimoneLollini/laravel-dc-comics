@@ -47,7 +47,7 @@ class ComicsController extends Controller
         $newComics->sale_date = $request['sale_date'];
         $newComics->type = $request['type'];
         $newComics->save();
-        return redirect()->route('comics.index');
+        return to_route('comics.index')->with('message', "$newComics->title added!");
     }
 
     /**
@@ -83,7 +83,7 @@ class ComicsController extends Controller
     {
         $data = $request->all();
         $comic->update($data);
-        return redirect()->route('comics.index');
+        return to_route('comics.index')->with('message', "$comic->title update!");
     }
 
     /**
@@ -95,6 +95,6 @@ class ComicsController extends Controller
     public function destroy(Comic $comic)
     {
         $comic->delete();
-        return redirect()->route('comics.index');
+        return to_route('comics.index')->with('message', "$comic->title deleted!");
     }
 }
