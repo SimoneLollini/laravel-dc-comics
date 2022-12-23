@@ -9,13 +9,5 @@
     <div class="details">{{$comic->series}}</div>
     <div class="details">{{$comic->sale_date}}</div>
     <div class="details">{{$comic->type}}</div>
-
-
-
-
-
-
-
-
 </section>
 @endsection
