@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreComicsRequest;
 use App\Http\Requests\UpdateComicsRequest;
-use App\Models\Comics;
+use App\Models\Comic;
 
 class ComicsController extends Controller
 {
@@ -15,7 +15,7 @@ class ComicsController extends Controller
      */
     public function index()
     {
-        $comics = Comics::all();
+        $comics = Comic::all();
         return view('admin.comics.index', compact('comics'));
     }
 
@@ -38,7 +38,7 @@ class ComicsController extends Controller
     public function store(StoreComicsRequest $request)
     {
         $data = $request->all();
-        $newComics = new Comics();
+        $newComics = new Comic();
         $newComics->title = $request['title'];
         $newComics->description = $request['description'];
         $newComics->image = $request['image'];
@@ -53,10 +53,10 @@ class ComicsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comics  $comics
+     * @param  \App\Models\Comic  $comics
      * @return \Illuminate\Http\Response
      */
-    public function show(Comics $comic)
+    public function show(Comic $comic)
     {
         return view('admin.comics.show', compact('comic'));
     }
@@ -64,10 +64,10 @@ class ComicsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comics  $comics
+     * @param  \App\Models\Comic  $comics
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comics $comic)
+    public function edit(Comic $comic)
     {
         return view('admin.comics.edit', compact('comic'));
     }
@@ -76,23 +76,25 @@ class ComicsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateComicsRequest  $request
-     * @param  \App\Models\Comics  $comics
+     * @param  \App\Models\Comic  $comics
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateComicsRequest $request, Comics $comics)
+    public function update(UpdateComicsRequest $request, Comic $comic)
     {
+        //dd($comic);
         $data = $request->all();
-        $comics->update($data);
-        return redirect()->route('comics.index');
+        // dd($data);
+        $comic->update($data);
+        return redirect()->route('comics.show', ["comic" => $comic->id]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comics  $comics
+     * @param  \App\Models\Comic  $comics
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comics $comics)
+    public function destroy(Comic $comics)
     {
         //
     }
