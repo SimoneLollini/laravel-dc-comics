@@ -1,34 +1,26 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     @vite('resources/js/app.js')
-
 </head>
 
 <body>
-    @include ('partials.header')
+
+    @include('partials.header')
     <!-- /header -->
 
     <main>
         @yield('contents')
     </main>
+    <!-- /main -->
 
-    @include ('partials.footer')
-    <footer>
-
-    </footer>
+    @include('partials.footer')
     <!-- /footer -->
-
 
 </body>
 
