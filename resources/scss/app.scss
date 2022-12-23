@@ -12,3 +12,11 @@ img {
     object-fit: contain;
     width: 100%;
 }
+
+section.show {
+    max-width: 80%;
+
+    img {
+        max-width: 300px;
+    }
+}
