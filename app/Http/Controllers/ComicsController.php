@@ -85,7 +85,7 @@ class ComicsController extends Controller
         $data = $request->all();
         // dd($data);
         $comic->update($data);
-        return redirect()->route('comics.show', ["comic" => $comic->id]);
+        return redirect()->route('comics.index');
     }
 
     /**
