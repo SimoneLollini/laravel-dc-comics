@@ -47,7 +47,7 @@ class ComicsController extends Controller
         $newComics->sale_date = $request['sale_date'];
         $newComics->type = $request['type'];
         $newComics->save();
-        return redirect()->route('comics.index', $newComics->id);
+        return redirect()->route('comics.index');
     }
 
     /**
@@ -81,9 +81,7 @@ class ComicsController extends Controller
      */
     public function update(UpdateComicsRequest $request, Comic $comic)
     {
-        //dd($comic);
         $data = $request->all();
-        // dd($data);
         $comic->update($data);
         return redirect()->route('comics.index');
     }
@@ -94,8 +92,9 @@ class ComicsController extends Controller
      * @param  \App\Models\Comic  $comics
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comic $comics)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        return redirect()->route('comics.index');
     }
 }

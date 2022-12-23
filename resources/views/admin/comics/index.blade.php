@@ -2,6 +2,7 @@
 
 @section('contents')
 <div class="container">
+    <a class="btn btn-warning m-3" href="{{route('comics.create')}}">Add</a>
     <div class="table-responsive">
         <table class="table table-primary">
             <thead>
@@ -23,6 +24,15 @@
                     <td>{{$comic->series}}</td>
                     <td>{{$comic->sale_date}}</td>
                     <td>{{$comic->type}}</td>
+                    <td>
+                        <a class="btn btn-success m-3 w-75" href="{{route('comics.show', $comic->id)}}">Details</a>
+                        <a class="btn btn-warning m-3 w-75" href="{{route('comics.edit', $comic->id)}}">Edit</a>
+                        <form action="{{route('comics.destroy', $comic->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
                 </tr>
                 @empty
                 <p>Ancora nessun fumetto!</p>

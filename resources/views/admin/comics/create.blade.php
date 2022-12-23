@@ -24,7 +24,7 @@
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input price="text" name="price" id="price" class="form-control" aria-describedby="priceHlper">
+            <input type="number" step="00.1" name="price" id="price" class="form-control" aria-describedby="priceHlper">
             <small id="priceHlper" class="text-muted">Add the product price here</small>
         </div>
         <div class="mb-3">
