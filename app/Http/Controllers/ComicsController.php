@@ -43,16 +43,6 @@ class ComicsController extends Controller
         $val_data = $request->validated();
 
         $newComic = Comic::create($val_data);
-        // $data = $request->all();
-        // $newComics = new Comic();
-        // $newComics->title = $request['title'];
-        // $newComics->description = $request['description'];
-        // $newComics->image = $request['image'];
-        // $newComics->price = $request['price'];
-        // $newComics->series = $request['series'];
-        // $newComics->sale_date = $request['sale_date'];
-        // $newComics->type = $request['type'];
-        // $newComics->save();
         return to_route('comics.index')->with('message', "$newComic->title added!");
     }
 
