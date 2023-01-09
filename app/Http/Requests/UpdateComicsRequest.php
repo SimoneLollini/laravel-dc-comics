@@ -33,4 +33,10 @@ class UpdateComicsRequest extends FormRequest
             'type' => 'nullable|max:100'
         ];
     }
+    public function messages()
+    {
+        return [
+            'title.required' => 'Non puoi cancellare questo campo, il titolo é obbligatorio',
+        ];
+    }
 }
