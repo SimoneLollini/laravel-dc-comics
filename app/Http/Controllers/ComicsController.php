@@ -41,7 +41,6 @@ class ComicsController extends Controller
     {
         // dd($request->title);
         $val_data = $request->validated();
-
         $newComic = Comic::create($val_data);
         return to_route('comics.index')->with('message', "$newComic->title added!");
     }
@@ -77,8 +76,8 @@ class ComicsController extends Controller
      */
     public function update(UpdateComicsRequest $request, Comic $comic)
     {
-        $data = $request->all();
-        $comic->update($data);
+        $val_data = $request->validated();
+        $comic->update($val_data);
         return to_route('comics.index')->with('message', "$comic->title update!");
     }
 

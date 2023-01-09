@@ -2,7 +2,16 @@
 
 @section('contents')
 
-<div class="container mb-5">
+<div class="container mb-5 py-4">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <h1 class="py-5">Edit "{{$comic->title}}"</h1>
     <form action="{{route('comics.update', ['comic' => $comic->id]) }}" method="POST" class="card p-3">
         @csrf
