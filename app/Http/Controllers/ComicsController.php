@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreComicsRequest;
 use App\Http\Requests\UpdateComicsRequest;
 use App\Models\Comic;
+use Illuminate\Http\Request;
+
 
 class ComicsController extends Controller
 {
@@ -37,17 +39,21 @@ class ComicsController extends Controller
      */
     public function store(StoreComicsRequest $request)
     {
-        $data = $request->all();
-        $newComics = new Comic();
-        $newComics->title = $request['title'];
-        $newComics->description = $request['description'];
-        $newComics->image = $request['image'];
-        $newComics->price = $request['price'];
-        $newComics->series = $request['series'];
-        $newComics->sale_date = $request['sale_date'];
-        $newComics->type = $request['type'];
-        $newComics->save();
-        return to_route('comics.index')->with('message', "$newComics->title added!");
+        // dd($request->title);
+        $val_data = $request->validated();
+
+        $newComic = Comic::create($val_data);
+        // $data = $request->all();
+        // $newComics = new Comic();
+        // $newComics->title = $request['title'];
+        // $newComics->description = $request['description'];
+        // $newComics->image = $request['image'];
+        // $newComics->price = $request['price'];
+        // $newComics->series = $request['series'];
+        // $newComics->sale_date = $request['sale_date'];
+        // $newComics->type = $request['type'];
+        // $newComics->save();
+        return to_route('comics.index')->with('message', "$newComic->title added!");
     }
 
     /**
